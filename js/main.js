@@ -366,9 +366,9 @@ function SetCharts() {
                 label: ['Direct verbruik', 'Batterij laden', 'Teruglevering aan net'],
                 data: [GetProzentCharts(dir_eigen), GetProzentCharts(eigen - dir_eigen), GetProzentCharts(1 - eigen)],
                 backgroundColor: [
-                    '#F2B95C',
-                    '#6B9B6A',
-                    '#7D7D7D'
+                    '#F2B05C',
+                    '#B7D99C',
+                    '#C4C4C4'
                 ],
                 borderColor: [
                     borderCol,
@@ -411,9 +411,9 @@ function SetCharts() {
                 label: ['Direct verbruik', 'Batterij ontladen', 'Netafname'],
                 data: [GetProzentCharts(dir_autarkie), GetProzentCharts(autark - dir_autarkie), GetProzentCharts(1 - autark)],
                 backgroundColor: [
-                    '#F2B95C',
-                    '#3A5A3D',
-                    '#4B4B4B'
+                    '#F2B05C',
+                    '#7A9A6D',
+                    '#7D7D7D'
                 ],
                 borderColor: [
                     borderCol,

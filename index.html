@@ -50,7 +50,7 @@
     <!-- CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/jquery-ui-1.13.1.custom.css">
-    <link rel="stylesheet" href="css/unabhaengig.css">
+    <link rel="stylesheet" href="css/main.css">
 
 </head>
 
@@ -68,20 +68,20 @@
         </span>
     </div>
 
-    <div class="col-md-10 ps-4 pt-3">
+    <div class="col-md-11 ps-4 pt-3">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-11">
                 <h1>Onafhankelijkheidscalculator</h1>
 
                 <div class="pb-2">
                     <!-- Jaarverbruik -->
                     <div class="row">
                         <div class="col-12">
-                            <h2>Jaarlijkse stroomverbruik
+                            <h3>Jaarlijkse stroomverbruik
                                 <a href="#" title="Vul hier uw jaarlijkse stroomverbruik in. Een gemiddeld huishouden verbruikt ongeveer 4000 kWh per jaar. Hoe lager het verbruik, hoe hoger de mogelijke onafhankelijkheidsgraad." id="linkJahresstromverbrauch">
                                     <img src="images/infoicon.svg" class="infoicon" alt="i">
                                 </a>
-                            </h2>
+                            </h3>
                         </div>
                     </div>
                     <div class="row">
@@ -96,11 +96,11 @@
                     <!-- PV Installatie -->
                     <div class="row">
                         <div class="col-12">
-                            <h2>Vermogen van de zonnepanelen
+                            <h3>Vermogen van de zonnepanelen
                                 <a href="#" title="Hier voert u het vermogen van het PV-systeem in (nominaal vermogen van de zonnepanelen). Per 1 kW PV-vermogen is ongeveer 5 tot 10 m² dakoppervlak nodig." id="linkPhotovoltaikleistung">
                                     <img src="images/infoicon.svg" class="infoicon" alt="i">
                                 </a>
-                            </h2>
+                            </h3>
                         </div>
                     </div>
                     <div class="row">
@@ -115,11 +115,11 @@
                     <!-- Batterij opslag -->
                     <div class="row">
                         <div class="col-12">
-                            <h2>Beschikbare opslagcapaciteit
+                            <h3>Beschikbare opslagcapaciteit
                                 <a href="#" title="De grootte van de batterijopslag wordt aangegeven met de bruikbare capaciteit. De bruikbare capaciteit kan lager zijn dan de nominale capaciteit en moet worden afgeleid uit de technische gegevens van de fabrikant." id="linkSpeicher">
                                     <img src="images/infoicon.svg" class="infoicon" alt="i">
                                 </a>
-                            </h2>
+                            </h3>
                         </div>
                     </div>
                     <div class="row">
@@ -133,16 +133,11 @@
 
                 </div>
             </div>
-
-            <!-- Rechterzijde -->
-            <div class="col-md-6">
-                <!-- grafiek placeholder -->
-            </div>
         </div>
 
         <!-- Diagrammen -->
         <div class="row">
-            <div class="col-md-6 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center">
                 <div class="diagramme">
                     <div class="chartInfo" id="ciAutark">
                         <a href="#" title="De onafhankelijkheidsgraad geeft aan welk deel van uw stroomverbruik door uw PV-batterijsysteem wordt gedekt. Zowel directe consumptie als gebruik uit de batterij tellen mee. Hoe hoger de onafhankelijkheid, hoe minder stroom u van het net nodig heeft." id="linkAutarkiegrad">
@@ -173,13 +168,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Mobiele weergave grafiek -->
-    <div class="col-md-5 pt-0">
-        <!-- <div id="grafik" class="d-block d-md-none my-5">
-            <img class="flussgrafik" src="images/unabhaengigkeitsrechner-energiefluesse.svg" alt="Infografiek van energiestromen" />
-        </div> -->
-    </div>
 </div>
 
 <!-- JS -->
@@ -187,7 +175,7 @@
 <script src="js/jquery-ui-1.13.1.js"></script>
 <script src="js/jquery.ui.touch-punch.min.js"></script>
 <script src="js/chart.min.js"></script>
-<script src="js/unabhaengig.js"></script>
+<script src="js/main.js"></script>
 <script src="wp-content/assets/js/iframeResizer.contentWindow.min.js"></script>
 
 </body>
