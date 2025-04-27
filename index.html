@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ocalc</title>
+    <meta name="description" content="Berechnen Sie mit unserem Unabhängigkeitsrechner ganz einfach Ihren Autarkiegrad, der von der Größe der PV-Anlage und des Stromspeichers abhängt.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="googlebot" content="noindex, indexifembedded">
+    <!--<link rel="icon" type="image/png" href="https://solar.htw-berlin.de/wp-content/uploads/cropped-htwsolar-favicon.png">-->
+    <link rel="icon" type="image/png" href="images/cropped-htwsolar-favicon.png">
+
+    <!-- FONTS -->
+    <link rel="preload" href="fonts/HTWBerlinWeb-Regular.woff" as="font" type="font/woff" crossorigin="anonymous">
+    <!-- <link rel="preload" href="fonts/HTWBerlinWeb-Italic.woff" as="font" type="font/woff" crossorigin="anonymous">-->
+    <link rel="preload" href="fonts/HTWBerlinWeb-Bold.woff" as="font" type="font/woff" crossorigin="anonymous">
+    <!--<link rel="preload" href="fonts/HTWBerlinWeb-BoldItalic.woff" as="font" type="font/woff" crossorigin="anonymous"> -->
+    <style>
+        @font-face {
+            font-family: 'HTWBerlin';
+            font-style: normal;
+            font-weight: 400;
+            src: url('fonts/HTWBerlinWeb-Regular.woff') format('woff');
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'HTWBerlin';
+            font-style: italic;
+            font-weight: 400;
+            src: url('fonts/HTWBerlinWeb-Italic.woff') format('woff');
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'HTWBerlin';
+            font-style: normal;
+            font-weight: 700;
+            src: url('fonts/HTWBerlinWeb-Bold.woff') format('woff');
+            font-display: swap;
+        }
+        
+        @font-face {
+            font-family: 'HTWBerlin';
+            font-style: italic;
+            font-weight: 700;
+            src: url('fonts/HTWBerlinWeb-BoldItalic.woff') format('woff');
+            font-display: swap;
+        }
+    </style>
+
+    <!-- CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="css/jquery-ui-1.13.1.custom.css">
+    <link rel="stylesheet" href="css/unabhaengig.css">
+
+</head>
+
+<body>
+
+    <div class="container-fluid" id="inhalt">
+        <div class="row">
+                <span style="font-size: 10px; display:none" class="showOnlyOnDebug">
+                    Debug: 
+                    <div id="xs" class="d-inline d-sm-none">xs</div>
+                    <div id="sm" class="d-none d-sm-inline d-md-none">sm</div>
+                    <div id="md" class="d-none d-md-inline d-lg-none">md</div>
+                    <div id="lg" class="d-none d-lg-inline d-xl-none">lg</div>
+                    <div id="lg" class="d-none d-xl-inline d-xxl-none">xl</div>
+                    <div id="lg" class="d-none d-xxl-inline">xxl</div>
+                </span>
+
+            </div>
+            <div class="col-md-10 ps-4 pt-3">
+                <div class="row">
+                    <div class="col-md-6 ">
+                        <h1>Unabhängigkeitsrechner</h1>
+                        <div class="pb-2">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2>Jahresstromverbrauch
+                                        <a href="index.html#" title="Geben Sie hier Ihren j&auml;hrlichen Stromverbrauch ein. Der durchschnittliche Stromverbrauch von Einfamilienhaushalten liegt bei rund 4000 kWh pro Jahr. Je geringer der Stromverbrauch ist, desto h&ouml;her ist der erreichbare Autarkiegrad."
+                                            id="linkJahresstromverbrauch"><img src="images/infoicon.svg" class="infoicon" alt="i"></img>
+                                        </a>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-md-7 col-lg-8">
+                                    <div class="slider" id="slider-range-last"></div>
+                                </div>
+                                <div class="col-4 col-md-5 col-lg-4">
+                                    <input type="text" id="amount-last"><span>kWh</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2>Photovoltaikleistung
+                                        <a href="index.html#" title="Hier ist die Gr&ouml;&szlig;e des Photovoltaiksystems (Nennleistung der Photovoltaikmodule) einzutragen. Pro 1 kW Photovoltaikleistung wird eine Dachfl&auml;che von etwa 5 bis 10 m&sup2; ben&ouml;tigt." id="linkPhotovoltaikleistung"><img src="images/infoicon.svg" class="infoicon" alt="i"></img>
+                                        </a>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-md-7 col-lg-8">
+                                    <div class="slider" id="slider-range-pv"></div>
+                                </div>
+                                <div class="col-4 col-md-5 col-lg-4">
+                                    <input type="text" id="amount-pv"><span>kW</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <h2>Nutzbare Speicherkapazität
+                                        <a href="index.html#" title="Die Gr&ouml;&szlig;e des Batteriespeichers kann durch die nutzbare Speicherkapazit&auml;t angegeben werden. Die nutzbare Kapazit&auml;t eines Batteriespeichers kann geringer als dessen Nennkapazit&auml;t sein und sollte aus den Datenblattangaben
+                                        der Hersteller hervorgehen." id="linkSpeicher"><img src="images/infoicon.svg" class="infoicon" alt="i"></img>
+                                        </a>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-8 col-md-7 col-lg-8">
+                                    <div class="slider" id="slider-range-bat"></div>
+                                </div>
+                                <div class="col-4 col-md-5 col-lg-4">
+                                    <input type="text" id="amount-bat"><span>kWh</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <!-- <div id="grafik" class="d-none d-md-block">
+                            <img class="flussgrafik" src="images/unabhaengigkeitsrechner-energiefluesse.svg" alt="Infografik zu Energieflüssen" />
+                        </div> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <div class="diagramme">
+                            <div class="chartInfo" id="ciAutark">
+                                <a href="index.html#" title="Der Autarkiegrad gibt den Anteil des Stromverbrauchs an, der durch das Photovoltaik-Speichersystem versorgt wird. Hierzu tr&auml;gt entweder der zeitgleiche Direktverbrauch des erzeugten Solarstroms oder die Entladung des Batteriespeichers bei.
+                                Je h&ouml;her der Autarkiegrad ist, desto weniger Energie wird aus dem Stromnetz bezogen." id="linkAutarkiegrad"><img src="images/infoicon.svg" class="infoicon" id="info-autark" alt="i"></img>
+                                </a>
+                            </div>
+                            <h2 class="text-center">Autarkiegrad</h2>
+                            <div class="centervalue" id="cvautark"></div>
+                            <div class="kuchen d-flex justify-content-center mt-2">
+                                <canvas id="chart-autark"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 d-flex justify-content-center">
+                        <div class="diagramme">
+                            <div class="chartInfo" id="ciEigen">
+                                <a href="index.html#" title="Der Eigenverbrauchsanteil beschreibt den Anteil des erzeugten Solarstroms, der entweder zeitgleich durch die Stromverbraucher oder zur Ladung des Batteriespeichers genutzt wird. Je h&ouml;her der Eigenverbrauchsanteil ist, desto weniger Solarstrom
+                                wird in das Netz eingespeist." id="linkEigenverbrauchsanteil"><img src="images/infoicon.svg" class="infoicon" id="info-eigen" alt="i"></img>
+                                </a>
+                            </div>
+                            <h2 class="text-center">Eigenverbrauchsanteil</h2>
+                            <div class="centervalue" id="cveigen"></div>
+                            <div class="kuchen d-flex justify-content-center mt-2">
+                                <canvas id="chart-eigen"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 pt-0">
+                <div id="grafik" class="d-block d-md-none my-5">
+                    <img class="flussgrafik" src="images/unabhaengigkeitsrechner-energiefluesse.svg" alt="Infografik zu Energieflüssen" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/jquery-ui-1.13.1.js"></script>
+    <script src="js/jquery.ui.touch-punch.min.js"></script>
+    <script src="js/chart.min.js"></script>
+    <!--integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+    <script src="js/unabhaengig.js"></script>
+    <script src="wp-content/assets/js/iframeResizer.contentWindow.min.js"></script>
+
+</body>
+
+</html>

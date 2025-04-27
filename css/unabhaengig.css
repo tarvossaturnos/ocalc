@@ -1,0 +1,370 @@
+body {
+    margin: 0px;
+    padding: 0;
+    font-size: 12px;
+    font-family: HTWBerlin, Verdana, Arial, Helvetica, sans-serif;
+    color: #000;
+    min-width: 342px;
+    max-width: 1024px;
+    /*height: calc(100vh - 20px);*/
+}
+
+
+/* Dark mode */
+
+.dark-mode {
+    background-color: #383838;
+    color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #383838;
+        color: white;
+    }
+    input {
+        background-color: #383838;
+        color: white;
+        border: 1px solid #595959;
+    }
+    .slider {
+        background-color: black;
+        border-color: #595959;
+    }
+    .ui-slider-horizontal .ui-slider-range {
+        background-color: rgba(255, 255, 255, 0.4);
+        ;
+    }
+    .ui-slider .ui-slider-handle {
+        background: #BFBFBF;
+    }
+    .infoicon {
+        background-color: rgba(255, 255, 255, 1);
+        border-radius: 7px;
+    }
+    #loading {
+        background-color: #383838;
+    }
+}
+
+
+/* Loading animation */
+
+#loading {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    text-align: center;
+    opacity: 0.7;
+    /*background-color: #fff;*/
+    z-index: 99;
+    left: 0%;
+}
+
+.loader {
+    /*border: 16px solid #f3f3f3;*/
+    /* Light grey */
+    /*border-top: 16px solid #3498db;*/
+    /* Blue */
+    /*border-radius: 50%;*/
+    width: 80px;
+    height: 80px;
+    animation: pulse 1s linear infinite;
+    /*spin 2s linear infinite;*/
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+    50% {
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+
+/* Grüner Balken links */
+
+#menu_head {
+    background-color: #76B900;
+    position: relative;
+    padding: 10px 5px 5px 17px;
+    color: #ffffff;
+    font-weight: bold;
+    line-height: 1.4em;
+    /*height: 626px;*/
+}
+
+@media only screen and (min-width: 768px) {
+    #menu_head {
+        height: 660px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #menu_head {
+        height: 113px;
+    }
+}
+
+#menu_head h1 {
+    font-size: 22px;
+    line-height: 2;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#menu_head h4 {
+    font-size: 10px;
+    margin: 0 0 20px 0;
+}
+
+#menu_head svg g {
+    fill: rgba(255, 255, 255, 0.6);
+}
+
+#menu_head a {
+    color: #ffffff;
+    display: block;
+    text-decoration: none;
+}
+
+#menu_head p {
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+#htw {
+    width: 100%;
+    max-height: 100px;
+    margin-top: 10px;
+}
+
+#linkContainer {
+    position: absolute;
+    bottom: 20px;
+    font-size: 14px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 856px) {
+    #linkContainer {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #linkContainer {
+        right: 20px;
+    }
+    #htw {
+        width: 150px;
+    }
+}
+
+#copy-link {
+    cursor: pointer;
+}
+
+#checkmark-copied-icon {
+    display: inline;
+    margin-left: 5px;
+}
+
+.linkicon {
+    width: 16px;
+    margin-right: 10px;
+    margin-top: -3px;
+}
+
+#inhalt #eingabe span {
+    font-size: 19px;
+}
+
+#inhalt h1 {
+    color: #76B900;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+#inhalt h2 {
+    font-size: 19px;
+    margin-top: 20px;
+    font-weight: normal;
+}
+
+#inhalt .infoicon:hover {
+    background-color: #eee;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#menu_head .infoicon:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.infoicon {
+    width: 15px;
+    height: 15px;
+    margin-left: 0px;
+    margin-bottom: 4px;
+}
+
+#info-autark {
+    margin-left: 15px;
+    margin-bottom: -28px;
+}
+
+#info-eigen {
+    margin-left: 20px;
+    margin-bottom: -28px;
+}
+
+.chartInfo {
+    z-index: 10;
+    position: absolute;
+    top: 8px;
+}
+
+#ciEigen {
+    left: calc(50% + 70px);
+}
+
+#ciAutark {
+    left: calc(50% + 40px);
+}
+
+.slider {
+    width: 100%;
+}
+
+input {
+    text-align: right;
+    width: 60px;
+    margin-right: 5px;
+    padding: 2px;
+    font-family: HTWBerlin, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 19px;
+}
+
+@media (prefers-color-scheme: light) {
+    input {
+        border: 1px solid #eee;
+    }
+}
+
+input:hover,
+input:focus {
+    border: 1px solid #77B900;
+    color: #77B900;
+    box-shadow: 0px 0px 0px #77B900;
+    outline: 0px solid #77B900;
+}
+
+#inhalt #grafik img {
+    width: 100%;
+    max-height: 280px;
+    margin-top: 10px;
+}
+
+.diagramme {
+    margin-top: 20px;
+    /*width: 100%;*/
+    position: relative;
+    height: 300px;
+    width: 279px;
+}
+
+#chart-eigen,
+#chart-autark {
+    max-height: 260px;
+    max-width: 260px;
+}
+
+.centervalue {
+    z-index: -1;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    position: absolute;
+    top: 163px;
+    left: calc(50% - 25px);
+}
+
+
+/* CSS Properties von jQuery überschreiben */
+
+.ui-slider-horizontal {
+    height: 5px;
+    margin-top: 15px;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+    top: -0.6em;
+    margin-left: -0.6em;
+}
+
+.ui-slider .ui-slider-handle {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.ui-widget-header {
+    background: #ccc;
+    border: none;
+    color: #fff;
+}
+
+.ui-state-default,
+.ui-widget-header .ui-state-default {
+    border: 1px solid #222;
+}
+
+.ui-corner-all {
+    border-radius: 10px;
+}
+
+.ui-state-focus,
+.ui-widget-content .ui-state-focus {
+    border: 1px solid #77B900;
+    background: #77B900;
+    outline: 0;
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover {
+    border: 1px solid #77B900;
+    background: #9FDE2C;
+    outline: 0;
+}
+
+.ui-tooltip {
+    background-color: #fff;
+    color: #000;
+    opacity: 1;
+    font-family: HTWBerlin;
+    padding: 10px;
+}
