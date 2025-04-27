@@ -328,7 +328,7 @@ function GetProzentLabels(wert) {
     return GetProzent(wert, 4) / 100;
 }
 
-//Funktion zum Setzen der Charts
+// Functie om de grafieken in te stellen
 function SetCharts() {
 
     Chart.defaults.font.family = 'HTWBerlin';
@@ -346,8 +346,8 @@ function SetCharts() {
     Chart.defaults.maintainAspectRatio = false;
     Chart.defaults.animation = false;
 
-    /* Darkmode Colors */
-    var borderCol
+    /* Kleuren voor Donkere Modus */
+    var borderCol;
     if (dark) {
         borderCol = 'rgba(56, 56, 56, 1)';
     } else {
@@ -363,7 +363,7 @@ function SetCharts() {
         type: 'doughnut',
         data: {
             datasets: [{
-                label: ['Direktverbrauch', 'Batterieladung', 'Netzeinspeisung'],
+                label: ['Direct verbruik', 'Batterij laden', 'Teruglevering aan net'],
                 data: [GetProzentCharts(dir_eigen), GetProzentCharts(eigen - dir_eigen), GetProzentCharts(1 - eigen)],
                 backgroundColor: [
                     '#FFC000',
@@ -381,7 +381,7 @@ function SetCharts() {
         options: {
             plugins: {
                 title: {
-                    text: 'Eigenverbrauchsanteil'
+                    text: 'Zelfverbruiksaandeel'
                 },
                 tooltip: {
                     callbacks: {
@@ -408,7 +408,7 @@ function SetCharts() {
         type: 'doughnut',
         data: {
             datasets: [{
-                label: ['Direktverbrauch', 'Batterieentladung', 'Netzbezug'],
+                label: ['Direct verbruik', 'Batterij ontladen', 'Netafname'],
                 data: [GetProzentCharts(dir_autarkie), GetProzentCharts(autark - dir_autarkie), GetProzentCharts(1 - autark)],
                 backgroundColor: [
                     '#FFC000',
@@ -426,7 +426,7 @@ function SetCharts() {
         options: {
             plugins: {
                 title: {
-                    text: 'Autarkiegrad'
+                    text: 'Mate van onafhankelijkheid'
                 },
                 tooltip: {
                     callbacks: {
